@@ -1,0 +1,846 @@
+app:
+  description: 基于父子分段的高精度文本处理工作流
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 基于父子分段的高精度文本处理工作流
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: package
+  value:
+    plugin_unique_identifier: lfenghx/cutstring:0.0.1@13962763e9494c3c5a70a56b3fbda455190d317e514c10c7b5989631cc9b4ff8
+- current_identifier: null
+  type: package
+  value:
+    plugin_unique_identifier: lfenghx/data_process:0.0.1@fe276f439daddd6ac59e2389aae2f1950d3202e215388f8bb01ba8716b80c7fd
+- current_identifier: null
+  type: package
+  value:
+    plugin_unique_identifier: lfenghx/url_replace:0.0.1@da31ec7d7270b2c4ace875ccc92dbc9fb981fc1d6a02f2c22abea36806cde5d5
+kind: app
+version: 0.2.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: document-extractor
+      id: 1746974700706-source-1746974753854-target
+      selected: false
+      source: '1746974700706'
+      sourceHandle: source
+      target: '1746974753854'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: document-extractor
+        targetType: tool
+      id: 1746974753854-source-1746974790737-target
+      selected: false
+      source: '1746974753854'
+      sourceHandle: source
+      target: '1746974790737'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: iteration
+      id: 1746974827167-source-1746974859467-target
+      selected: false
+      source: '1746974827167'
+      sourceHandle: source
+      target: '1746974859467'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1746974859467'
+        sourceType: iteration-start
+        targetType: code
+      id: 1746974859467start-source-1746977666100-target
+      selected: false
+      source: 1746974859467start
+      sourceHandle: source
+      target: '1746977666100'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInLoop: false
+        sourceType: iteration
+        targetType: code
+      id: 1746974859467-source-1746974911966-target
+      source: '1746974859467'
+      sourceHandle: source
+      target: '1746974911966'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1746974859467'
+        sourceType: code
+        targetType: answer
+      id: 1747017412306-source-1747017813903-target
+      source: '1747017412306'
+      sourceHandle: source
+      target: '1747017813903'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: tool
+      id: 1746974911966-source-1747018386109-target
+      source: '1746974911966'
+      sourceHandle: source
+      target: '1747018386109'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: answer
+      id: 1747018386109-source-1746974962207-target
+      source: '1747018386109'
+      sourceHandle: source
+      target: '1746974962207'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: code
+      id: 1746974790737-source-1746974827167-target
+      source: '1746974790737'
+      sourceHandle: source
+      target: '1746974827167'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1746974859467'
+        sourceType: code
+        targetType: tool
+      id: 1746977666100-source-1747020860765-target
+      source: '1746977666100'
+      sourceHandle: source
+      target: '1747020860765'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1746974859467'
+        sourceType: tool
+        targetType: code
+      id: 1747020860765-source-1747017412306-target
+      source: '1747020860765'
+      sourceHandle: source
+      target: '1747017412306'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 请上传文本文件
+          max_length: 48
+          options: []
+          required: true
+          type: file
+          variable: file
+      height: 90
+      id: '1746974700706'
+      position:
+        x: 444.8883693544034
+        y: 277
+      positionAbsolute:
+        x: 444.8883693544034
+        y: 277
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_array_file: false
+        selected: false
+        title: 文档提取器
+        type: document-extractor
+        variable_selector:
+        - '1746974700706'
+        - file
+      height: 92
+      id: '1746974753854'
+      position:
+        x: 746.118844679359
+        y: 277
+      positionAbsolute:
+        x: 746.118844679359
+        y: 277
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Please enter the text to be cut
+            ja_JP: Please enter the text to be cut
+            pt_BR: Please enter the text to be cut
+            zh_Hans: 请传入待切块的文本
+          label:
+            en_US: Text to cut
+            ja_JP: Text to cut
+            pt_BR: Text to cut
+            zh_Hans: 切块文本
+          llm_description: 清洗数据并按标记和字节长度切割文本块
+          max: null
+          min: null
+          name: CutString
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Please enter the text to be cut
+            ja_JP: Please enter the text to be cut
+            pt_BR: Please enter the text to be cut
+            zh_Hans: 请输入最大切块字节数，人工标记符号为##\n
+          label:
+            en_US: Text to cut
+            ja_JP: Text to cut
+            pt_BR: Text to cut
+            zh_Hans: 最大切块字节数
+          llm_description: 清洗数据并按标记和字节长度切割文本块
+          max: null
+          min: null
+          name: Byte_Length
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: number
+        params:
+          Byte_Length: ''
+          CutString: ''
+        provider_id: lfenghx/cutstring/cutstring
+        provider_name: lfenghx/cutstring/cutstring
+        provider_type: builtin
+        selected: false
+        title: cutstring
+        tool_configurations: {}
+        tool_description: 清洗数据并按标记和字节长度切割文本块
+        tool_label: cutstring
+        tool_name: cutstring
+        tool_parameters:
+          Byte_Length:
+            type: constant
+            value: 4000
+          CutString:
+            type: mixed
+            value: '{{#1746974753854.text#}}'
+        type: tool
+      height: 54
+      id: '1746974790737'
+      position:
+        x: 1060.2415101342967
+        y: 277
+      positionAbsolute:
+        x: 1060.2415101342967
+        y: 277
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\ndef main(text: str) -> dict:\n    try:\n        data =\
+          \ json.loads(text)\n        chunk_list = data.get('chunk')\n\n        if\
+          \ chunk_list is not None and not isinstance(chunk_list, list):\n       \
+          \     print(\"警告：chunk不是一个数组，将其转换为包含单个元素的数组。\")\n            chunk_list\
+          \ = [chunk_list]\n\n        return {\"chunk\": chunk_list}\n\n    except\
+          \ json.JSONDecodeError as e:\n        print(f\"解析JSON数据失败: {e}\")\n    \
+          \    return {\"chunk\": None}"
+        code_language: python3
+        desc: ''
+        outputs:
+          chunk:
+            children: null
+            type: array[string]
+        selected: false
+        title: 数组转换
+        type: code
+        variables:
+        - value_selector:
+          - '1746974790737'
+          - text
+          variable: text
+      height: 54
+      id: '1746974827167'
+      position:
+        x: 1350.9999999999998
+        y: 277
+      positionAbsolute:
+        x: 1350.9999999999998
+        y: 277
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        error_handle_mode: terminated
+        height: 261
+        is_parallel: false
+        iterator_selector:
+        - '1746974827167'
+        - chunk
+        output_selector:
+        - '1747017412306'
+        - result
+        output_type: array[string]
+        parallel_nums: 10
+        selected: false
+        start_node_id: 1746974859467start
+        title: 迭代
+        type: iteration
+        width: 1217
+      height: 261
+      id: '1746974859467'
+      position:
+        x: 1656.486819477766
+        y: 277
+      positionAbsolute:
+        x: 1656.486819477766
+        y: 277
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 1217
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 48
+      id: 1746974859467start
+      parentId: '1746974859467'
+      position:
+        x: 24
+        y: 68
+      positionAbsolute:
+        x: 1680.486819477766
+        y: 345
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 44
+      zIndex: 1002
+    - data:
+        code: "def main(texts: list[str]) -> dict:\n\n    return {\n        \"result\"\
+          : \"\\n\".join(texts)\n    }"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 文本合并
+        type: code
+        variables:
+        - value_selector:
+          - '1746974859467'
+          - output
+          variable: texts
+      height: 54
+      id: '1746974911966'
+      position:
+        x: 2927.8113116069144
+        y: 277
+      positionAbsolute:
+        x: 2927.8113116069144
+        y: 277
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '数据清洗，父子语义分段，url批量替换已完成，请查看
+
+          {{#1747018386109.files#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 137
+      id: '1746974962207'
+      position:
+        x: 3493.159547901756
+        y: 277
+      positionAbsolute:
+        x: 3493.159547901756
+        y: 277
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "\ndef main(string: str,index:int) -> dict:\n    return {\n        \"\
+          result\": len(string.encode('utf-8')),\n        \"index\": index+1\n   \
+          \ }\n"
+        code_language: python3
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1746974859467'
+        outputs:
+          index:
+            children: null
+            type: number
+          result:
+            children: null
+            type: number
+        selected: false
+        title: 输入长度提取
+        type: code
+        variables:
+        - value_selector:
+          - '1746974859467'
+          - item
+          variable: string
+        - value_selector:
+          - '1746974859467'
+          - index
+          variable: index
+      height: 54
+      id: '1746977666100'
+      parentId: '1746974859467'
+      position:
+        x: 94.69279431990458
+        y: 65
+      positionAbsolute:
+        x: 1751.1796137976705
+        y: 342
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        code: "import json\ndef main(text: str) -> dict:\n    try:\n        data =\
+          \ json.loads(text)\n        num = data.get('num')\n        time = data.get('time')\n\
+          \        result = data.get('result')\n\n        return {\"num\": num, \"\
+          time\": time, \"result\": result}\n\n    except json.JSONDecodeError as\
+          \ e:\n        print(f\"解析JSON数据失败: {e}\")\n        return {\"num\": None,\
+          \ \"time\": None, \"result\": None}"
+        code_language: python3
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1746974859467'
+        outputs:
+          num:
+            children: null
+            type: number
+          result:
+            children: null
+            type: string
+          time:
+            children: null
+            type: number
+        selected: false
+        title: 运行结果提取
+        type: code
+        variables:
+        - value_selector:
+          - '1747020860765'
+          - text
+          variable: text
+      height: 54
+      id: '1747017412306'
+      parentId: '1746974859467'
+      position:
+        x: 637.930130257651
+        y: 65
+      positionAbsolute:
+        x: 2294.416949735417
+        y: 342
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        answer: '第{{#1746977666100.index#}}块处理中.......，输出字节数：{{#1747017412306.num#}}，耗时：{{#1747017412306.time#}}秒
+
+          -----------------
+
+          '
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1746974859467'
+        selected: false
+        title: 完成消息
+        type: answer
+        variables: []
+      height: 175
+      id: '1747017813903'
+      parentId: '1746974859467'
+      position:
+        x: 901.7256878327548
+        y: 65
+      positionAbsolute:
+        x: 2558.212507310521
+        y: 342
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: input txt file
+            ja_JP: input txt file
+            pt_BR: input txt file
+            zh_Hans: 输入txt文本
+          label:
+            en_US: txt String
+            ja_JP: txt String
+            pt_BR: txt String
+            zh_Hans: txt文本
+          llm_description: 实现url的批量替换
+          max: null
+          min: null
+          name: content
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: input url prefix
+            ja_JP: input url prefix
+            pt_BR: input url prefix
+            zh_Hans: 写入url前缀
+          label:
+            en_US: url prefix
+            ja_JP: url prefix
+            pt_BR: url prefix
+            zh_Hans: url前缀
+          llm_description: 实现url的批量替换
+          max: null
+          min: null
+          name: prefix
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: input url suffix
+            ja_JP: input url suffix
+            pt_BR: input url suffix
+            zh_Hans: 写入url后缀，比如jpg，png等
+          label:
+            en_US: url suffix
+            ja_JP: url suffix
+            pt_BR: url suffix
+            zh_Hans: url后缀
+          llm_description: 实现url的批量替换
+          max: null
+          min: null
+          name: suffix
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        params:
+          content: ''
+          prefix: ''
+          suffix: ''
+        provider_id: lfenghx/url_replace/url_replace
+        provider_name: lfenghx/url_replace/url_replace
+        provider_type: builtin
+        selected: false
+        title: url_replace
+        tool_configurations: {}
+        tool_description: 实现url的批量替换
+        tool_label: url_replace
+        tool_name: url_replace
+        tool_parameters:
+          content:
+            type: mixed
+            value: '{{#1746974911966.result#}}'
+          prefix:
+            type: mixed
+            value: ' http://192.168.0.130/iamge/'
+          suffix:
+            type: mixed
+            value: jpg
+        type: tool
+      height: 54
+      id: '1747018386109'
+      position:
+        x: 3214.580836281959
+        y: 277
+      positionAbsolute:
+        x: 3214.580836281959
+        y: 277
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        is_team_authorization: true
+        iteration_id: '1746974859467'
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: Please select a large model
+            ja_JP: Please select a large model
+            pt_BR: Please select a large model
+            zh_Hans: 请选择大模型
+          label:
+            en_US: LLM
+            ja_JP: LLM
+            pt_BR: LLM
+            zh_Hans: 大模型
+          llm_description: 按语义进行父子分段的插件
+          max: null
+          min: null
+          name: model
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: llm
+          template: null
+          type: model-selector
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Please enter the text to be processed
+            ja_JP: Please enter the text to be processed
+            pt_BR: Please enter the text to be processed
+            zh_Hans: 请输入需要处理的文本
+          label:
+            en_US: Data process
+            ja_JP: Data process
+            pt_BR: Data process
+            zh_Hans: 需要处理的文本
+          llm_description: 按语义进行父子分段的插件
+          max: null
+          min: null
+          name: context
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Please enter the text to be processed
+            ja_JP: Please enter the text to be processed
+            pt_BR: Please enter the text to be processed
+            zh_Hans: 请输入你的自定义分段需求
+          label:
+            en_US: userrequire
+            ja_JP: userrequire
+            pt_BR: userrequire
+            zh_Hans: 用户自定义要求
+          llm_description: 按语义进行父子分段的插件
+          max: null
+          min: null
+          name: userrequire
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        params:
+          context: ''
+          model: ''
+          userrequire: ''
+        provider_id: lfenghx/data_process/data_process
+        provider_name: lfenghx/data_process/data_process
+        provider_type: builtin
+        selected: false
+        title: data_process
+        tool_configurations:
+          model:
+            completion_params: {}
+            mode: chat
+            model: qwen-max-latest
+            model_type: llm
+            provider: langgenius/tongyi/tongyi
+            type: model-selector
+        tool_description: 按语义进行父子分段的插件
+        tool_label: data_process
+        tool_name: data_process
+        tool_parameters:
+          context:
+            type: mixed
+            value: '{{#1746974859467.item#}}'
+          userrequire:
+            type: mixed
+            value: ''
+        type: tool
+      height: 90
+      id: '1747020860765'
+      parentId: '1746974859467'
+      position:
+        x: 371.1240337999757
+        y: 65
+      positionAbsolute:
+        x: 2027.6108532777416
+        y: 342
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    viewport:
+      x: -281.1595479017624
+      y: 103.49999999999937
+      zoom: 1.0000000000000018
