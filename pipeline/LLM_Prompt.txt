@@ -1,0 +1,43 @@
+【日期提取】
+你需要从提供的文档内容中识别并提取所有日期信息。请按照以下要求执行：
+
+1. 仔细检查每个文本片段，找出所有表示日期和时间的内容
+2. 日期可能的格式包括但不限于：
+   - dd/mm/yyyy 或 dd-mm-yyyy
+   - mm/dd/yyyy 或 mm-dd-yyyy
+   - yyyy/mm/dd 或 yyyy-mm-dd
+   - 英文日期（如 Jan 5, 2023; 5 January 2023）
+   - 包含时间的日期（如 2023/12/05 14:30; 05-12-2023 2:30 PM）
+   - 相对日期（如 昨天、今天、明天、上周、下个月）
+
+3. 对于每个识别到的日期，请提供：
+   - original_text: 原始文本中的日期字符串
+   - position: 日期所在的位置标识
+   - possible_formats: 该日期可能的格式（如 "dd/mm/yyyy"）
+
+4. 请以JSON数组格式返回结果，不要包含任何额外解释。示例输出：
+[
+  {"original_text": "05/12/2023", "position": "paragraph_3", "possible_formats": ["dd/mm/yyyy", "mm/dd/yyyy"]},
+  {"original_text": "Jan 15, 2024 3:30 PM", "position": "cell_sheet1_row5_col2", "possible_formats": ["MMM dd, yyyy hh:mm a"]}
+]
+
+文档内容：
+{{document_parsed.content}}
+
+【文档重构】
+请根据提供的日期格式化信息，将原始文档内容中的日期替换为统一格式（yyyy-MM-dd hh:mm:ss）。
+
+操作要求：
+1. 仅替换日期部分，保持文档其他内容不变
+2. 严格按照position匹配要替换的内容
+3. 对于格式化失败的日期，保持原始文本不变
+4. 保持文档原有的结构和格式特征
+5. 返回修改后的完整文档内容，不要添加额外解释
+
+原始文档内容：
+{{document_parsed.content}}
+
+日期格式化信息：
+{{formatted_dates_result.formatted_dates}}
+
+文档类型：{{document_parsed.document_type}}
